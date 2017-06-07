@@ -10,7 +10,7 @@ trait FrameWithBody extends Frame {
   override def toString: String =
     s"${command}\n${printHeaders}\n\n${body}\u0000"
 
-  def bodyAsJson: Json = parse(body) match {
+  def bodyAsJson: Json = parse(body.trim) match {
     case Left(_) => Json.Null
     case Right(json) => json
   }
